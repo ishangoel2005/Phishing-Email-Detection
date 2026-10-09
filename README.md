@@ -1,12 +1,12 @@
-# 🛡️ Cross-Channel Threat Detection: Phishing Email Classification
+# Cross-Channel Threat Detection: Phishing Email Classification
 
-> A robust Machine Learning framework for detecting phishing emails using a **Hybrid Feature Engineering approach** combining TF-IDF NLP text representations with security indicator rules and Gradient Boosted Decision Trees (LightGBM).
+> A Robust Machine Learning framework for detecting phishing emails using a **Hybrid Feature Engineering approach** combining TF-IDF NLP text representations with security indicator rules and Gradient Boosted Decision Trees (LightGBM).
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
-This project focuses on cross-channel threat detection by identifying and classifying phishing email attempts. By analyzing both textual content (subject line and email body) and structural/heuristic security indicators (URL presence, credential request patterns, urgency keywords, casing ratios), the model provides high-accuracy, low-latency detection of deceptive email communications.
+This project focuses on Cross Channel Threat Detection by identifying and classifying phishing email attempts. By analyzing both textual content (subject line and email body) and structural/heuristic security indicators (URL presence, credential request patterns, urgency keywords, casing ratios), the model provides high-accuracy, low-latency detection of deceptive email communications.
 
 ### Key Highlights
 - **Processed & Transformed Raw Email Datasets**: Cleaned and standardized raw email text into high-dimensional structured features for model training and evaluation.
@@ -17,7 +17,7 @@ This project focuses on cross-channel threat detection by identifying and classi
 
 ---
 
-## 🚀 Key Results & Performance Metrics
+## Key Results & Performance Metrics
 
 | Metric | Score |
 | :--- | :--- |
@@ -28,7 +28,7 @@ This project focuses on cross-channel threat detection by identifying and classi
 
 ---
 
-## 🛠️ System Architecture & Workflow
+## System Architecture & Workflow
 
 ```
 ┌────────────────────────┐
@@ -66,7 +66,7 @@ This project focuses on cross-channel threat detection by identifying and classi
 
 ---
 
-## 🔬 Methodology & Feature Engineering
+## Methodology & Feature Engineering
 
 ### 1. Textual NLP Features (TF-IDF)
 - Concatenated cleaned subject lines and body text.
@@ -85,7 +85,7 @@ This project focuses on cross-channel threat detection by identifying and classi
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -103,7 +103,7 @@ This project focuses on cross-channel threat detection by identifying and classi
 
 ---
 
-## 💻 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Python 3.9+
@@ -130,7 +130,7 @@ pip install -r requirements.txt
 
 ---
 
-## ⚡ Usage
+## Usage
 
 ### 1. Feature Extraction
 Run the feature pipeline to extract TF-IDF vectors and security features:
@@ -152,7 +152,7 @@ python "MODEL 5_SYN/testing.py"
 
 ---
 
-## 📊 Feature Importance & Interpretability
+## Feature Importance & Interpretability
 The model utilizes **SHAP (SHapley Additive exPlanations)** to provide transparent, interpretable decisions. Top features influencing classification decisions include:
 1. TF-IDF unigrams/bigrams relating to financial or security urgency.
 2. Frequency of embedded URLs and IP tokens.
@@ -161,12 +161,12 @@ The model utilizes **SHAP (SHapley Additive exPlanations)** to provide transpare
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+Contributions, issues and feature requests are welcome! Feel free to check the issues page.
 
 ---
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
