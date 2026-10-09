@@ -1,0 +1,41 @@
+*.csv
+*.zip
+*.pdf
+All Datasets/
+archive/
+dataset 1/
+dataset 2/
+
+*.h5
+*.pkl
+*.joblib
+*.npz
+*.npy
+*.pt
+*.onnx
+*.bin
+
+ml_output/
+*/artifacts/
+*/final output/
+*/model_artifacts/
+*/mlp_tfidf_full_output/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+.ipynb_checkpoints/

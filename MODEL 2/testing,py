@@ -1,0 +1,67 @@
+import re
+import pickle
+import numpy as np
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+# ---------------- CONFIG ----------------
+MODEL_PATH = "C:/Users/Dell/Downloads/Research Paper_Literature Review/MODEL 2/spam_cnn_bilstm_glove.h5"
+TOKENIZER_PATH = "C:/Users/Dell/Downloads/Research Paper_Literature Review/MODEL 1/tokenizer.pkl"
+MAX_LEN = 250        # MUST match training
+THRESHOLD = 0.75     # safer than 0.5 for real-world
+
+# ---------------- CLEANING ----------------
+def clean_text(text):
+    text = str(text).lower()
+
+    # normalize patterns
+    text = re.sub(r"http\S+", " url ", text)
+    text = re.sub(r"\S+@\S+", " email ", text)
+    text = re.sub(r"\d+", " number ", text)
+
+    # remove noise
+    text = re.sub(r"[^a-z\s]", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
+
+# ---------------- LOAD MODEL ----------------
+print("🔄 Loading model and tokenizer...")
+
+model = load_model(MODEL_PATH)
+
+with open(TOKENIZER_PATH, "rb") as f:
+    tokenizer = pickle.load(f)
+
+print("✅ Loaded successfully\n")
+
+# ---------------- USER INPUT ----------------
+print("📧 ENTER EMAIL DETAILS\n")
+
+sender = input("Sender Email Address: ").strip()
+body = input("\nEmail Body:\n").strip()
+
+# ---------------- PREPARE INPUT ----------------
+combined_text = f"{sender} {body}"
+cleaned_text = clean_text(combined_text)
+
+sequence = tokenizer.texts_to_sequences([cleaned_text])
+padded = pad_sequences(sequence, maxlen=MAX_LEN)
+
+# ---------------- PREDICTION ----------------
+prob = model.predict(padded, verbose=0)[0][0]
+confidence = prob * 100
+
+# decision logic
+if prob >= THRESHOLD:
+    result = "🚨 SPAM / PHISHING / FRAUD"
+elif prob >= 0.5:
+    result = "⚠️ SUSPICIOUS (REVIEW REQUIRED)"
+else:
+    result = "✅ LEGITIMATE EMAIL"
+
+# ---------------- OUTPUT ----------------
+print("\n🔍 PREDICTION RESULT")
+print("----------------------")
+print("Result     :", result)
+print(f"Confidence : {confidence:.2f}%")
